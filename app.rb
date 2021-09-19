@@ -1,5 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require './lib/peeps'
+
 
 class Chitter < Sinatra::Base
   configure :development do
@@ -7,14 +9,13 @@ class Chitter < Sinatra::Base
   end
 
   get '/' do
-    'Welcome to Chitter (Twitter plz dont sue)'
-    #will turn this page into a sign in on a later user story
+    'Welcome to Chitter'
   end
 
-  get '/peeps/new' do
-    'Hi'
-    erb :'peeps/new'
-  end 
+ get '/peeps' do
+  @peeps = Peeps.all
+  erb :'peeps/index'
+end
 
   run! if app_file == $0
 end
