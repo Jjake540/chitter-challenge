@@ -1,8 +1,9 @@
-feature 'post a peep' do
-  scenario 'post my first peep' do
-    visit('/peeps')
+feature 'Adding a new bookmark' do
+  scenario 'A user can add a bookmark to Bookmark Manager' do
+    visit('/peeps/new')
+    fill_in('text', with: 'Test')
+    click_button('Submit')
 
-    expect(page).to have_content('My first peep')
-    expect(page).to have_content('My second peep')
+    expect(page).to have_content 'Test'
   end
 end

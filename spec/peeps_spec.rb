@@ -14,6 +14,15 @@ describe Peeps do
       expect(peeps).to include("My second peep")
     end
   end
+
+  describe '.create' do
+    it 'post a peep' do
+      Peeps.create(text: 'Test')
+  
+      expect(Peeps.all).to include 'Test'
+    end
+  end
+
 end
 
 
